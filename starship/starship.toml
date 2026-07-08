@@ -8,6 +8,8 @@ $git_branch \
 $git_status \
 $git_state \
 $fill\
+$c \
+$cpp \
 $python \
 $lua \
 $conda \
@@ -17,6 +19,7 @@ $nodejs \
 $rust \
 $golang \
 $package \
+$memory_usage \
 $line_break \
 $character
 """
@@ -24,6 +27,8 @@ $character
 add_newline = true
 
 palette = "tokyo"
+
+scan_timeout = 10
 
 [palettes.tokyo]
 bg        = "#1f2335"
@@ -100,7 +105,27 @@ stashed     = "󰏗 "
 ####################################
 
 [git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = '[🍒 PICKING](bold red)'
 style = "bold red"
+
+####################################
+# C
+####################################
+
+[c]
+symbol = " "
+style = "fg:bg bg:green bold"
+format = "[](green)[$symbol($version)]($style)[](green)"
+
+####################################
+# C++
+####################################
+
+[cpp]
+symbol = " "
+style = "fg:bg bg:green bold"
+format = "[](green)[$symbol($version)]($style)[](green)"
 
 ####################################
 # Python
@@ -225,7 +250,11 @@ disabled = true
 disabled = false
 
 [memory_usage]
-disabled = true
+disabled = false
+threshold = -1
+symbol = '󰍛'
+format = '$symbol [${ram_pct}( | ${swap_pct})]($style) '
+style = 'bold dimmed green'
 
 [hostname]
 ssh_only = true
