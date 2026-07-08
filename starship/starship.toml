@@ -2,6 +2,7 @@
 
 format = """
 $cmd_duration \
+$hostname \
 $directory \
 $git_branch \
 $git_status \
@@ -227,7 +228,9 @@ disabled = false
 disabled = true
 
 [hostname]
-disabled = true
+ssh_only = true
+style = "fg:bg bg:red bold"
+format = "[](red)[󰣀 $hostname]($style)[](red)"
 
 [username]
 disabled = true
