@@ -1,0 +1,234 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$cmd_duration \
+$directory \
+$git_branch \
+$git_status \
+$git_state \
+$fill\
+$python \
+$lua \
+$conda \
+${custom.dockerfile} \
+$docker_context \
+$nodejs \
+$rust \
+$golang \
+$package \
+$line_break \
+$character
+"""
+
+add_newline = true
+
+palette = "tokyo"
+
+[palettes.tokyo]
+bg        = "#1f2335"
+blue      = "#7dcfff"
+cyan      = "#7dcfff"
+green     = "#9ece6a"
+yellow    = "#e0af68"
+orange    = "#ff9e64"
+red       = "#f7768e"
+purple    = "#bb9af7"
+white     = "#c0caf5"
+gray      = "#565f89"
+
+####################################
+# Prompt Character
+####################################
+
+[character]
+success_symbol = "[❯](bold blue)"
+error_symbol = "[❯](bold red)"
+vimcmd_symbol = "[❮](bold green)"
+
+####################################
+# Directory
+####################################
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+fish_style_pwd_dir_length = 1
+style = "fg:bg bg:blue bold"
+format = "[](blue)[ $path]($style)[](blue)"
+
+####################################
+# Command Duration
+####################################
+
+[cmd_duration]
+min_time = 1000
+style = "fg:bg bg:cyan bold"
+format = "[](cyan)[󰔛 $duration]($style)[](cyan)"
+
+####################################
+# Git Branch
+####################################
+
+[git_branch]
+symbol = " "
+style = "fg:bg bg:purple bold"
+format = "[](purple)[$symbol$branch]($style)[](purple)"
+
+####################################
+# Git Status
+####################################
+
+[git_status]
+style = "fg:bg bg:orange bold"
+format = "[](orange)[ $all_status$ahead_behind ]($style)[](orange)"
+
+conflicted = "⚔ "
+ahead      = "⇡${count} "
+behind     = "⇣${count} "
+diverged   = "⇕ "
+up_to_date = "✓ "
+untracked  = "?${count} "
+stashed    = "≡ "
+modified   = "!${count} "
+staged     = "+${count} "
+renamed    = "»${count} "
+deleted    = "✘${count} "
+
+####################################
+# Git State
+####################################
+
+[git_state]
+style = "bold red"
+
+####################################
+# Python
+####################################
+
+[python]
+symbol = " "
+style = "fg:bg bg:green bold"
+format = "[](green)[$symbol${pyenv_prefix}(${version})]($style)[](green)"
+
+####################################
+# Lua
+####################################
+
+[lua]
+symbol = " "
+style = "fg:bg bg:blue bold"
+format = "[](blue)[$symbol($version)]($style)[](blue)"
+detect_extensions = ["lua"]
+detect_files = [".luarc.json", ".luarc.jsonc"]
+
+####################################
+# Conda
+####################################
+
+[conda]
+style = "fg:bg bg:green bold"
+format = "[](green)[ $environment]($style)[](green)"
+ignore_base = false
+
+####################################
+# Node
+####################################
+
+[nodejs]
+symbol = " "
+style = "fg:bg bg:green bold"
+format = "[](green)[$symbol($version)]($style)[](green)"
+
+####################################
+# Rust
+####################################
+
+[rust]
+symbol = " "
+style = "fg:bg bg:orange bold"
+format = "[](orange)[$symbol($version)]($style)[](orange)"
+
+####################################
+# Go
+####################################
+
+[golang]
+symbol = " "
+style = "fg:bg bg:cyan bold"
+format = "[](cyan)[$symbol($version)]($style)[](cyan)"
+
+####################################
+# Package Version
+####################################
+
+[package]
+symbol = "󰏗 "
+style = "fg:bg bg:yellow bold"
+format = "[](yellow)[$symbol$version]($style)[](yellow)"
+
+####################################
+# Docker
+####################################
+
+[custom.dockerfile]
+when = "test -f Dockerfile"
+symbol = " "
+style = "fg:bg bg:blue bold"
+format = "[](blue)[$symbol Docker]($style)[](blue)"
+
+[docker_context]
+symbol = " "
+style = "fg:bg bg:blue bold"
+format = "[](blue)[$symbol$context]($style)[](blue)"
+only_with_files = false
+detect_extensions = []
+detect_files = []
+detect_folders = []
+
+####################################
+# Fill
+####################################
+
+[fill]
+symbol = " "
+
+####################################
+# Battery
+####################################
+
+[battery]
+disabled = false
+
+[[battery.display]]
+threshold = 20
+style = "bold red"
+
+####################################
+# Time (optional)
+####################################
+
+[time]
+disabled = true
+
+####################################
+# Disable noisy modules
+####################################
+
+[aws]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[kubernetes]
+disabled = false
+
+[memory_usage]
+disabled = true
+
+[hostname]
+disabled = true
+
+[username]
+disabled = true
+
