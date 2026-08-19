@@ -197,7 +197,7 @@ format = "[](yellow)[$symbol$version]($style)[](yellow)"
 ####################################
 
 [custom.dockerfile]
-when = "test -f Dockerfile"
+detect_files = ["Dockerfile"]
 symbol = " "
 style = "fg:bg bg:blue bold"
 format = "[](blue)[$symbol Docker]($style)[](blue)"
